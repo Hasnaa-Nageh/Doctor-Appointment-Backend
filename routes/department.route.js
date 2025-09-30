@@ -8,7 +8,7 @@ const authorize = require("../middleware/authorize.middle");
 const upload = require("../middleware/upload");
 const router = express.Router();
 
-router.get("/count", CountDepartment);
+router.get("/counts", CountDepartment);
 router.post(
   "/add-department",
   upload.single("image"),
