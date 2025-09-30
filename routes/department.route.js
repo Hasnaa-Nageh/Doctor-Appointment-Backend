@@ -9,6 +9,7 @@ const upload = require("../middleware/upload");
 const router = express.Router();
 
 router.get("/counts", CountDepartment);
+
 router.post(
   "/add-department",
   upload.single("image"),
