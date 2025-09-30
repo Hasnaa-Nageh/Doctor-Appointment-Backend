@@ -19,7 +19,9 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-
+app.get("/", (req, res) => {
+  res.status(200).json({ message: "Server Running Successfully" });
+});
 app.use("/api/auth", authRouter);
 app.use("/api/doctor", doctorRouter);
 app.use("/api/appointment", AppointmentRouter);
