@@ -61,5 +61,21 @@ const getSingleDoctor = async (req, res) => {
   }
 };
 
+const CountDoctor = async (req, res) => {
+  try {
+    const count = await Doctor.countDocuments();
+    if (!count) {
+      return res.status(400).json({ message: "No Doctors Found" });
+    }
+    res.status(201).json({ message: "Count Doctors", count });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+      error: err.message,
+    });
+  }
+};
 
-module.exports = { addDoctor, getAllDoctors, getSingleDoctor };
+module.exports = { addDoctor, getAllDoctors, getSingleDoctor, CountDoctor };
