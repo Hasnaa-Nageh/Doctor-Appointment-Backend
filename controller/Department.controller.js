@@ -25,5 +25,21 @@ const addDepartment = async (req, res) => {
   }
 };
 
+const CountDepartment = async (req, res) => {
+  try {
+    const count = await Department.countDocuments();
+    if (!count) {
+      return res.status(400).json({ message: "No Department Found" });
+    }
+    res.status(201).json({ message: "Count Department", count });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+      error: err.message,
+    });
+  }
+};
 
-module.exports = { addDepartment };
+module.exports = { CountDepartment ,addDepartment};
