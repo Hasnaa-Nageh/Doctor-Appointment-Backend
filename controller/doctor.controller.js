@@ -3,7 +3,7 @@ const Doctor = require("./../models/doctor.model");
 const addDoctor = async (req, res) => {
   try {
     const { name, experienceYears, description, specialty } = req.body;
-    const image = req.file ? `/uploads/${req.file.filename}` : null;
+    const image = req.file ? `/upload/${req.file.filename}` : null;
     if (
       ![name, description, specialty, image].every(Boolean) ||
       experienceYears === undefined
