@@ -3,12 +3,12 @@ const {
   addDoctor,
   getAllDoctors,
   getSingleDoctor,
-  CountDoctor
+  CountDoctor,
 } = require("../controller/doctor.controller");
 const upload = require("../middleware/upload");
 const router = express.Router();
 
-router.get("/counts",CountDoctor)
+router.get("/counts", CountDoctor);
 router.post("/", upload.single("image"), addDoctor);
 router.get("/", getAllDoctors);
 router.get("/:id", getSingleDoctor);

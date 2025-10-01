@@ -9,7 +9,7 @@ const cors = require("cors");
 
 app.use(express.json());
 app.use(cors());
-app.use("/files", express.static("upload"));
+app.use("/uploads", express.static("uploads"));
 
 app.use(
   cors({
@@ -22,6 +22,7 @@ app.use(
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Server Running Successfully" });
 });
+
 app.use("/api/auth", authRouter);
 app.use("/api/doctor", doctorRouter);
 app.use("/api/appointment", AppointmentRouter);

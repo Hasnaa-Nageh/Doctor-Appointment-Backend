@@ -3,10 +3,14 @@ const Doctor = require("./../models/doctor.model");
 const addDoctor = async (req, res) => {
   try {
     const { name, experienceYears, description, specialty } = req.body;
-    const image = req.file ? req.file.filename : null;
-    if (!name || !experienceYears || !description || !specialty || !image) {
+    const image = req.file ? `/uploads/${req.file.filename}` : null;
+    if (
+      ![name, description, specialty, image].every(Boolean) ||
+      experienceYears === undefined
+    ) {
       return res.status(400).json({ message: "All Fields Are Required" });
     }
+
     const newDoctor = new Doctor({
       name,
       specialty,
