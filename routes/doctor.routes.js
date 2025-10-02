@@ -9,7 +9,7 @@ const upload = require("../middleware/upload");
 const router = express.Router();
 
 router.get("/counts", CountDoctor);
-router.post("/",  addDoctor);
+router.post("/add-doctors",  addDoctor);
 router.get("/", getAllDoctors);
 router.get("/:id", getSingleDoctor);
 module.exports = router;

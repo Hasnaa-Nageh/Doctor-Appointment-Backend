@@ -4,10 +4,7 @@ const addDoctor = async (req, res) => {
   try {
     const { name, experienceYears, description, specialty, image } = req.body;
 
-    if (
-      ![name, description, specialty].every(Boolean) ||
-      experienceYears === undefined
-    ) {
+    if (!name || !description || !specialty || !experienceYears || !image) {
       return res.status(400).json({ message: "All Fields Are Required" });
     }
 
@@ -16,7 +13,7 @@ const addDoctor = async (req, res) => {
       specialty,
       description,
       experienceYears,
-      image, 
+      image,
     });
 
     const saveDoctor = await newDoctor.save();
