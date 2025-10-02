@@ -2,8 +2,9 @@ const Doctor = require("./../models/doctor.model");
 
 const addDoctor = async (req, res) => {
   try {
-    const { name, experienceYears, description, specialty, image } = req.body;
+    const { name, experienceYears, description, specialty } = req.body;
 
+    const image = req.file ? req.file.filename : null;
     if (!name || !description || !specialty || !experienceYears || !image) {
       return res.status(400).json({ message: "All Fields Are Required" });
     }
@@ -13,7 +14,7 @@ const addDoctor = async (req, res) => {
       specialty,
       description,
       experienceYears,
-      image,
+      image: req.file?.filename,
     });
 
     const saveDoctor = await newDoctor.save();
