@@ -1,5 +1,4 @@
 const express = require("express");
-app.use("/upload", express.static("upload"));
 
 const {
   addDoctor,
@@ -9,6 +8,7 @@ const {
 } = require("../controller/doctor.controller");
 const upload = require("../middleware/upload");
 const router = express.Router();
+router.use("/upload", express.static("upload"));
 
 router.get("/counts", CountDoctor);
 router.post("/add-doctor", upload.single("image"), addDoctor);
